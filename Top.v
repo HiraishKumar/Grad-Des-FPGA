@@ -1,4 +1,4 @@
-module GrDes #(
+module Top #(
     // GradDes_test
     parameter NUM_ITERATIONS = 50,
     parameter signed LEARNING_RATE_A = 32'h0000_0030,        // Decimal 0.125 Q24.8 format

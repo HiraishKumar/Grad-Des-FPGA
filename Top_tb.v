@@ -35,7 +35,7 @@ module Top_tb;
     wire done_op;
 
 
-    GrDes #(
+    Top #(
         .NUM_ITERATIONS (NUM_ITERATIONS),
         .LEARNING_RATE_A (LEARNING_RATE_A ),     // Decimal 0.125 Q24.8 format
         .LEARNING_RATE_B (LEARNING_RATE_B ),     // Decimal 0.125 Q24.8 format

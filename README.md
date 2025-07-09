@@ -171,7 +171,7 @@ Top #(
     .LEARNING_RATE_B(32'h0080),     // 0.5 in Q24.8
     .LEARNING_RATE_C(32'h0040),     // 0.25 in Q24.8
     .LEARNING_RATE_D(32'h0020)      // 0.125 in Q24.8
-) GrDes (
+) Top (
     .clk(clk),                      // System clock
     .rst_n(rst_n),                  // Active-low reset
     .start_op(start_optimization),  // Start optimization trigger
