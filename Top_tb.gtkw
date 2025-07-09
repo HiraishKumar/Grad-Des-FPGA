@@ -1,0 +1,71 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Wed Jul 09 17:30:26 2025
+[*]
+[dumpfile] "D:\Gradeint Descent\GradDes_test\Top_tb.vcd"
+[dumpfile_mtime] "Wed Jul 09 17:30:07 2025"
+[dumpfile_size] 18137916
+[savefile] "D:\Gradeint Descent\GradDes_test\Top_tb.gtkw"
+[timestart] 34520000
+[size] 1920 1009
+[pos] -1 -1
+*-24.000000 1145000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] Top_tb.
+[treeopen] Top_tb.uut.
+[treeopen] Top_tb.uut.grad_val_diff.
+[sst_width] 260
+[signals_width] 270
+[sst_expanded] 1
+[sst_vpaned_height] 297
+@29
+Top_tb.clk
+@420
+Top_tb.i
+@28
+Top_tb.rst_n
+Top_tb.start_op
+Top_tb.uut.check_conv.converged
+@c08024
+Top_tb.uut.iter_count[5:0]
+@28
+(0)Top_tb.uut.iter_count[5:0]
+(1)Top_tb.uut.iter_count[5:0]
+(2)Top_tb.uut.iter_count[5:0]
+(3)Top_tb.uut.iter_count[5:0]
+(4)Top_tb.uut.iter_count[5:0]
+(5)Top_tb.uut.iter_count[5:0]
+@1401200
+-group_end
+@20000
+-
+-
+-
+@40000420
+[fpshift_count] 8
+Top_tb.uut.z_min[31:0]
+@8420
+Top_tb.uut.final_a_at_min[7:0]
+@20000
+-
+-
+-
+@8420
+Top_tb.uut.final_b_at_min[7:0]
+@20000
+-
+-
+-
+@8420
+Top_tb.uut.final_c_at_min[7:0]
+@20000
+-
+-
+-
+@8420
+Top_tb.uut.final_d_at_min[7:0]
+@20000
+-
+-
+-
+[pattern_trace] 1
+[pattern_trace] 0
