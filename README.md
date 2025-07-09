@@ -48,7 +48,7 @@ To simulate the Gradient Descent optimizer using Icarus Verilog and view the wav
 1.  **Compile the Verilog files**: Open a terminal or command prompt in the directory containing the Verilog source files. Execute the following command:
 
     ```bash
-    iverilog -g2012 -o Top_tb.out fixed_16_capped_diff.v snap_to_closest_int.v fixed_32_check_conv.v fixed_32_add_sub.v fixed_32_capped_mult.v fixed_32_comp.v fixed_32_mult.v fixed_64_mult.v func.v func_grad_val_diff.v fixed_64_clamp.v GrDes.v Top_tb.v
+    iverilog -g2012 -o Top_tb.out fixed_16_capped_diff.v snap_to_closest_int.v fixed_32_check_conv.v fixed_32_add_sub.v fixed_32_capped_mult.v fixed_32_comp.v fixed_32_mult.v fixed_64_mult.v func.v func_grad_val_diff.v fixed_64_clamp.v Top.v Top_tb.v
     ```
 
     This command compiles all necessary modules, including the `Top_tb.v` testbench, and generates an executable simulation file named `Top_tb.out`.
@@ -160,7 +160,7 @@ The Top module operates with the following states:
 -----
 
 ## Usage Example: Testbench Deep 
-This Verilog `Top_tb` testbench is built to thoroughly validate the `Top` module, our FPGA-accelerated Gradient Descent optimizer. It’s designed by a programmer, for a programmer, focusing on configuration, input/output management, and step-by-step verification.
+This Verilog `Top_tb` testbench is built to thoroughly validate the `Top` module, the FPGA-accelerated Gradient Descent optimizer.
 
 
 ```verilog
@@ -209,7 +209,7 @@ The testbench orchestrates the simulation through a series of timed events:
 3.  **Iterative Testing**: A `for` loop runs **50 test cases**:
       * **Input Staging**: The `a_input` through `d_input` values (which are incremented each loop) are buffered and applied to the `Top` module's initial parameter inputs.
       * **Optimization Trigger**: `start_op` is asserted to begin an optimization cycle.
-      * **Wait for Completion**: The testbench then **`wait(done_op == 1'b1)`**, pausing simulation until the `Top` module signals the current optimization run is complete. This is crucial for verifying multi-cycle operations.
+      * **Wait for Completion**: The testbench then **`wait(done_op == 1'b1)`**, pausing simulation until the `Top` module signals the current optimization run is complete.
       * **Result Reporting**: Upon `done_op` going high, key outputs are displayed:
           * Initial input parameters.
           * **`z_min`**: The final minimum function value found (converted from Q24.8 to decimal).
