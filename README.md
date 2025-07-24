@@ -43,40 +43,34 @@ This repository contains a hardware-accelerated Gradient Descent algorithm imple
 
 ### How to Run Simulation
 
-To simulate the Gradient Descent optimizer using Icarus Verilog and view the waveforms with GTKWave, follow these steps:
+To simulate the Gradient Descent optimizer with the default `func.v` and Testcases:
 
-1.  **Compile the Verilog files**: Open a terminal or command prompt in the directory containing the Verilog source files. Execute the following command:
+1.  **Compile the Verilog files**: Open a terminal in the directory containing the Verilog source files and compile usung `Icarus Verilog` and execute the following command:
 
     ```bash
     iverilog -g2012 -o Top_tb.out fixed_16_capped_diff.v snap_to_closest_int.v fixed_32_check_conv.v fixed_32_add_sub.v fixed_32_capped_mult.v fixed_32_comp.v fixed_32_mult.v fixed_64_mult.v func.v func_grad_val_diff.v fixed_64_clamp.v Top.v Top_tb.v
     ```
 
-    This command compiles all necessary modules, including the `Top_tb.v` testbench, and generates an executable simulation file named `Top_tb.out`.
 
-2.  **Run the simulation**: Execute the compiled output file using `vvp`:
+2.  **Run the simulation**: Execute the compiled output to run the simulation according to test bench `Top_tb.v` file using `vvp`:
 
     ```bash
     vvp Top_tb.out
     ```
+it will print the output of the simulation in the terminal, and also Generate a wave form dump file (`.vcd`) . 
 
-    This command runs the simulation defined in `Top_tb.v`. During the simulation, it will generate a waveform dump file named `Top_tb.vcd`, which captures the signal activity. It will also print simulation output to the console as defined in the testbench.
-
-3.  **View waveforms (Optional)**: To visually inspect the simulation results and signal timings, open the generated VCD file with GTKWave:
+3.  **View waveforms**: To view the waveform simulation with the default config, execute the following command:
 
     ```bash
     gtkwave Top_tb.vcd -a Top_tb.gtkw
     ```
 
-    This command launches GTKWave and loads the `Top_tb.vcd` waveform file. The `-a Top_tb.gtkw` option attempts to load a saved GTKWave configuration file (if it exists), which can automatically display relevant signals, simplifying analysis. If `Top_tb.gtkw` does not exist, GTKWave will open with an empty waveform view, and you can manually select signals to display.
+ If `Top_tb.gtkw` does not exist, GTKWave will open with an empty waveform view, and you can manually select signals to display.
 
 ## System Architecture
 
-The system implements a complete hardware-accelerated gradient descent solution with the following key components:
+The system implements a hardware-accelerated gradient descent solution with the following key components:
 
-- **Top Module**: Central FSM controller managing the optimization process
-- **Function Evaluation**: Computes function values and gradients
-- **Convergence Detection**: Monitors algorithm stability and termination
-- **Fixed-Point Arithmetic**: Optimized for hardware implementation
 
 ![Function Minimizer Block Diagram](media/Function_Minimizer_fixed.drawio.png)
 *Figure 1: Function Minimizer Block Diagram*
@@ -103,7 +97,7 @@ Learning rates control the step size of the gradient descent algorithm. They are
 parameter signed LEARNING_RATE_A = = 32'h00000010; // Learning Rate of 0.125 (Q24.8)
 parameter signed LEARNING_RATE_B = = 32'h00000010; // Learning Rate of 0.125 (Q24.8)
 parameter signed LEARNING_RATE_C = = 32'h00000010; // Learning Rate of 0.125 (Q24.8)
-parameter signed LEARNING_RATE_D = = 32'h00000001; // Learning Rate of 0.125 (Q24.8)
+parameter signed LEARNING_RATE_D = = 32'h00000010; // Learning Rate of 0.125 (Q24.8)
 ```
 
 #### Convergence Bounds
@@ -170,7 +164,9 @@ Top #(
     .LEARNING_RATE_A(32'h0100),     // 1.0 in Q24.8
     .LEARNING_RATE_B(32'h0080),     // 0.5 in Q24.8
     .LEARNING_RATE_C(32'h0040),     // 0.25 in Q24.8
-    .LEARNING_RATE_D(32'h0020)      // 0.125 in Q24.8
+    .LEARNING_RATE_D(32'h0020),     // 0.125 in Q24.8
+    .LOWER_CONV_BOUND(LOWER_CONV_BOUND),
+    .UPPER_CONV_BOUND(UPPER_CONV_BOUND)
 ) Top (
     .clk(clk),                      // System clock
     .rst_n(rst_n),                  // Active-low reset
