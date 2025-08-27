@@ -22,4 +22,4 @@ wave:
 	gtkwave $(TARGET).vcd -a $(TARGET).gtkw
 
 clean:
-	-del /q *.out *.vcd
+	-rm *.out *.vcd
