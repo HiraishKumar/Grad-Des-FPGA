@@ -3,10 +3,10 @@
 module Top_tb;
 
     parameter        NUM_ITERATIONS   = 50;
-    parameter signed LEARNING_RATE_A  = 32'h00000011; // Learning Rate of 0.125 (Q24.8)
-    parameter signed LEARNING_RATE_B  = 32'h00000011; // Learning Rate of 0.125 (Q24.8)
-    parameter signed LEARNING_RATE_C  = 32'h00000011; // Learning Rate of 0.125 (Q24.8)
-    parameter signed LEARNING_RATE_D  = 32'h00000010; // Learning Rate of 0.125 (Q24.8)
+    parameter signed LEARNING_RATE_A  = 32'h0000_0011; // Learning Rate of 0.125 (Q24.8)
+    parameter signed LEARNING_RATE_B  = 32'h0000_0011; // Learning Rate of 0.125 (Q24.8)
+    parameter signed LEARNING_RATE_C  = 32'h0000_0011; // Learning Rate of 0.125 (Q24.8)
+    parameter signed LEARNING_RATE_D  = 32'h0000_0010; // Learning Rate of 0.125 (Q24.8)
     parameter signed LOWER_CONV_BOUND = 32'hFFFF_FFC0;
     parameter signed UPPER_CONV_BOUND = 32'h0000_0040;
     parameter signed INCREMENT        = 8'h01;

@@ -89,10 +89,10 @@ Learning rates control the step size of the gradient descent algorithm. They are
 
 ```verilog
 // Common learning rate values in Q24.8 format
-parameter signed LEARNING_RATE_A = = 32'h00000010; // Learning Rate of 0.125 (Q24.8)
-parameter signed LEARNING_RATE_B = = 32'h00000010; // Learning Rate of 0.125 (Q24.8)
-parameter signed LEARNING_RATE_C = = 32'h00000010; // Learning Rate of 0.125 (Q24.8)
-parameter signed LEARNING_RATE_D = = 32'h00000010; // Learning Rate of 0.125 (Q24.8)
+parameter signed LEARNING_RATE_A = = 32'h0000_0011; // Learning Rate of 0.1875 (Q24.8)
+parameter signed LEARNING_RATE_B = = 32'h0000_0011; // Learning Rate of 0.1875 (Q24.8)
+parameter signed LEARNING_RATE_C = = 32'h0000_0011; // Learning Rate of 0.1875 (Q24.8)
+parameter signed LEARNING_RATE_D = = 32'h0000_0010; // Learning Rate of 0.125 (Q24.8)
 ```
 
 #### Convergence Bounds

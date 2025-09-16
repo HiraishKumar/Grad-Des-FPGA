@@ -9,15 +9,8 @@ if "%1" == "clean" goto clean
 if "%1" == "run" goto run
 if "%1" == "wave" goto wave
 if "%1" == "test" goto test
-goto all
 
-:compile
-    iverilog -g2012 -o %TARGET%.out -y %LIB_PATH% %VCS_FILES%
-    if errorlevel 1 (
-        echo Compilation failed.
-        exit /b 1
-    )
-    goto end
+goto all
 
 :all
     call :compile
@@ -26,6 +19,14 @@ goto all
     if errorlevel 1 exit /b 1
     call :wave
     if errorlevel 1 exit /b 1
+    goto end
+
+:compile
+    iverilog -g2012 -W all -W floating-nets -o %TARGET%.out -y %LIB_PATH% %VCS_FILES%
+    if errorlevel 1 (
+        echo Compilation failed.
+        exit /b 1
+    )
     goto end
 
 :test
