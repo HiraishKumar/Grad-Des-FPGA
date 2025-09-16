@@ -1,3 +1,5 @@
+`timescale 1ns / 1ps
+
 module fixed_32_check_conv #(
     parameter signed LOWER_CONV_BOUND = 32'hFFFF_FFC0,
     parameter signed UPPER_CONV_BOUND = 32'h0000_0040

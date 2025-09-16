@@ -1,3 +1,5 @@
+`timescale 1ns / 1ps
+
 module fixed_16_capped_diff(
     input signed [15:0] a_in,      // Input operand A (Q8.8 format)
     input signed [15:0] b_in,      // Input operand B (Q8.8 format)

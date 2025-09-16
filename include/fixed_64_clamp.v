@@ -1,3 +1,5 @@
+`timescale 1ns / 1ps
+
 module fixed_64_clamp(
     input signed [63:0] a_in,      // Input operand A (Q56.8 format)
     output signed [15:0] b_out,    // Product P (Q8.8 format, 16 bits)

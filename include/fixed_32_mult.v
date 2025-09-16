@@ -1,3 +1,5 @@
+`timescale 1ns / 1ps
+
 module fixed_32_mult(
     input signed [31:0] a_in,    // Input operand A (Q24.8 format)
     input signed [31:0] b_in,    // Input operand B (Q24.8 format)

@@ -1,3 +1,5 @@
+`timescale 1ns / 1ps
+
 module snap_to_closest_int (
     input wire signed [15:0] fixed_point_in,    // 8.8 signed fixed point input
     output wire signed [7:0] rounded_integer_out       // 8-bit signed integer output

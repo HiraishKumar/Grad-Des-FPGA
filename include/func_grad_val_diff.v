@@ -1,3 +1,5 @@
+`timescale 1ns / 1ps
+
 module func_grad_val_diff #(
     parameter LEARNING_RATE_A = 32'h00000010, // Learning Rate of 0.125 (Q24.8)
     parameter LEARNING_RATE_B = 32'h00000010, // Learning Rate of 0.125 (Q24.8)
@@ -95,16 +97,6 @@ module func_grad_val_diff #(
     wire func_c_grad_overflow;
     wire func_d_grad_overflow;
 
-    wire overflow_mult_a, underflow_mult_a;
-    wire overflow_mult_b, underflow_mult_b;
-    wire overflow_mult_c, underflow_mult_c;
-    wire overflow_mult_d, underflow_mult_d;
-
-    wire overflow1;
-    wire overflow2;
-    wire overflow_mult;
-    wire underflow_mult;
-
 
     // STAGE 1 - buffer inputs into a_in, b_in, c_in, d_in 
     //         - a_in_limit, b_in_limit, c_in_limit, d_in_limit 
@@ -138,7 +130,7 @@ module func_grad_val_diff #(
         d_grad_wire <= (z_val - z_limit_d) <<< 7;
 
         all_func_done <= func_val_done & func_a_grad_done & func_b_grad_done & func_c_grad_done & func_d_grad_done;
-        overflow <= func_val_overflow | func_a_grad_overflow | func_b_grad_overflow | func_c_grad_overflow | func_d_grad_overflow;
+        // overflow <= func_val_overflow | func_a_grad_overflow | func_b_grad_overflow | func_c_grad_overflow | func_d_grad_overflow;
     end
 
     
@@ -161,7 +153,7 @@ module func_grad_val_diff #(
             curr_state <= IDLE;
 
             func_done <= 1'b0;
-            // overflow <= 1'b0;
+            overflow <= 1'b0;
 
             start_grad_func <= 1'b0; // Halt Func operation
             rst_n_grad_func <= 1'b0; // reset funcs
@@ -238,6 +230,7 @@ module func_grad_val_diff #(
                     // Computation of Stage 4 registered   
                     value <= z_val;
                     func_done <= 1'b1;
+                    overflow <= func_val_overflow | func_a_grad_overflow | func_b_grad_overflow | func_c_grad_overflow | func_d_grad_overflow;
                 end    
                 default : begin
                     curr_state <= IDLE;

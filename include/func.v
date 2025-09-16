@@ -1,3 +1,5 @@
+`timescale 1ns / 1ps
+
 module func(
     input clk,
     input rst_n,
@@ -191,7 +193,7 @@ end
 
     fixed_32_mult t2_par(       // Calculate 2*d
         .a_in({{16{d_in_buffer[15]}},d_in_buffer}) , // 16 bit input sign extended to 32
-        .b_in(PLUS_FIVE),                            // Constant
+        .b_in(PLUS_TWO),                            // Constant
         .p_out(term2_partial),
         .overflow(),
         .underflow_q()

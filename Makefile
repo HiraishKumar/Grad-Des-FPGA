@@ -8,12 +8,12 @@ LIB_PATH = include
 compile: $(TARGET).out
 
 $(TARGET).out: $(VCS_FILES)
-	iverilog -g2012 -o $(TARGET).out -y $(LIB_PATH) $(VCS_FILES)
+	iverilog -g2012 -W all -W floating-nets -o $(TARGET).out -y $(LIB_PATH) $(VCS_FILES)
 
 all: run wave
 
 test:
-	python PythonTests/GradientDescent.py
+	python3 PythonTests/GradientDescent.py
 
 run: $(TARGET).out
 	vvp $(TARGET).out
