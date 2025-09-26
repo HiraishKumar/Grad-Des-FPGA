@@ -4,6 +4,9 @@
 **Date:** June 2025
 
 ---
+### Top Level State Diagram
+![Top Level State Diagram](media/Top_State_diagram.drawio.png)
+---
 ## Table of Contents
 - [Introduction](#introduction)
 - [How to Run](#how-to-run)
