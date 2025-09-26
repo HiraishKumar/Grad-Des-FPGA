@@ -5,7 +5,7 @@
 
 ---
 ### Top Level State Diagram
-![Top Level State Diagram](media/Top_State_diagram.drawio.png)
+![Function Minimizer Block Diagram](media/Function_Minimizer_fixed.drawio.png)
 ---
 ## Table of Contents
 - [Introduction](#introduction)
